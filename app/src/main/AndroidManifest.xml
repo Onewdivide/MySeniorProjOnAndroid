@@ -19,7 +19,8 @@
         </activity>
         <activity android:name=".ExplorerMap" />
         <activity android:name=".NavigationActivity" />
-        <activity android:name=".ChooseDestination"></activity>
+        <activity android:name=".ChooseDestination" />
+        <activity android:name=".selectStartLocationActivity"></activity>
     </application>
 
 </manifest>
