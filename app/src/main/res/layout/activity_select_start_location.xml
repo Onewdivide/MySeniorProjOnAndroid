@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.onewdivide.myapplication1.selectStartLocationActivity">
+
+    <TextView
+        android:id="@+id/pleaseWait"
+        android:layout_width="199dp"
+        android:layout_height="124dp"
+        android:text="โปรดรอการประมวลผลเพื่อตำแหน่งของท่านที่ถูกต้องสักครูู่นึง"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="183dp" />
+</android.support.constraint.ConstraintLayout>

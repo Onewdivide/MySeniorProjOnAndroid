@@ -1393,9 +1393,9 @@ public class NavigationActivity extends AppCompatActivity implements TextToSpeec
                     }
                     if(path.get(i+1) == Ladder3){//node24 to ladder3
                         if(path.get(i-1) == Node23){
-                            WordInPath.add("หมุนซ้ายและเดินตรงไป 3 เมตร");
+                            WordInPath.add("หมุนซ้ายและเดินตรงไป 2.7 เมตร");
                         }if(path.get(i-1) == CopyStore){
-                            WordInPath.add("หมุนขวาและเดินตรงไป 3 เมตร");
+                            WordInPath.add("หมุนขวาและเดินตรงไป 2.7 เมตร");
                         }
                     }
 
