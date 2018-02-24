@@ -41,8 +41,12 @@ public class ChooseDestination extends AppCompatActivity implements WheelPicker.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_destination);
 
-        startX = getIntent().getStringExtra("startX");
-        startY = getIntent().getStringExtra("startY");
+        MyTTS.getInstance(ChooseDestination.this).speak("กรุณาเลือกจุดหมายปลายทางของท่าน");
+
+        Bundle extra = getIntent().getExtras();
+
+        startX = extra.getString("startX1");
+        startY = extra.getString("startY1");
 
         Allplace.add("ทางเข้าหนึ่ง");
         Allplace.add("บันไดหนึ่ง");

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -139,6 +140,7 @@ public class selectStartLocationActivity extends AppCompatActivity {
                     new FeedJSONTask().execute("");
                     loopcount+=1;
                     handler.postDelayed(runnable,5000);
+                    Log.e("getAutoLocationX",String.valueOf(getLocationX));
                 }
                 else{
                     for (int i = 0 ; i<allGetLocaitonX.size(); i++){
@@ -154,11 +156,12 @@ public class selectStartLocationActivity extends AppCompatActivity {
                             mostRepeatlyIntegerX = allGetLocaitonX.get(i);
                             mostRepeatlyIntegerY = allGetLocationY.get(i);
                         }
+                        Log.e("mostRepeatly",String.valueOf(mostRepeatlyIntegerX));
                     }
 
-                    Intent it = new Intent(getApplicationContext(),NavigationActivity.class);
-                    it.putExtra("startX",mostRepeatlyIntegerX);
-                    it.putExtra("startY",mostRepeatlyIntegerY);
+                    Intent it = new Intent(getApplicationContext(),ChooseDestination.class);
+                    it.putExtra("startX1",String.valueOf(mostRepeatlyIntegerX));
+                    it.putExtra("startY1",String.valueOf(mostRepeatlyIntegerY));
                     startActivity(it);
                     finish();
 
