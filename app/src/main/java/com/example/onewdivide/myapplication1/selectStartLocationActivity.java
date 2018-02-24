@@ -72,9 +72,9 @@ public class selectStartLocationActivity extends AppCompatActivity implements Vi
         allPlace2SendX.add(273);
         allPlace2SendY.add(183);
         allPlace2SendX.add(251);
-        allPlace2SendY.add(184);
+        allPlace2SendY.add(180);
         allPlace2SendX.add(227);
-        allPlace2SendY.add(184);
+        allPlace2SendY.add(180);
         allPlace2SendX.add(220);
         allPlace2SendY.add(175);
         allPlace2SendX.add(203);
@@ -132,9 +132,10 @@ public class selectStartLocationActivity extends AppCompatActivity implements Vi
 
     @Override
     public void onClick(View v) {
-        Intent it = new Intent(getApplicationContext(),NavigationActivity.class);
-        it.putExtra("startX",allPlace2SendX.get(thatPosition));
-        it.putExtra("startY",allPlace2SendY.get(thatPosition));
+        Intent it = new Intent(getApplicationContext(),ChooseDestination.class);
+        Log.e("startXAtselectPage", allPlace2SendX.get(thatPosition).toString());
+        it.putExtra("startX1",allPlace2SendX.get(thatPosition).toString());
+        it.putExtra("startY1",allPlace2SendY.get(thatPosition).toString());
         startActivity(it);
         finish();
 

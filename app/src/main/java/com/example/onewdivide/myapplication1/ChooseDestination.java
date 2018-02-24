@@ -41,8 +41,11 @@ public class ChooseDestination extends AppCompatActivity implements WheelPicker.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_destination);
 
-        startX = getIntent().getStringExtra("startX");
-        startY = getIntent().getStringExtra("startY");
+        Bundle extras = getIntent().getExtras();
+        startX = extras.getString("startX1");
+        startY = extras.getString("startY1");
+
+        Log.e("startXAtFirstTime",startX);
 
         Allplace.add("ทางเข้าหนึ่ง");
         Allplace.add("บันไดหนึ่ง");
@@ -185,7 +188,11 @@ public class ChooseDestination extends AppCompatActivity implements WheelPicker.
 //            Timestamp timestamplast = new Timestamp(System.currentTimeMillis());
 //            SuccessTimeStamp.setText(String.valueOf(timestamplast.getTime()));
 
+//            startX = getIntent().getStringExtra("startX1");
+//            startY = getIntent().getStringExtra("startY1");
+
             Intent it = new Intent(getApplicationContext(),NavigationActivity.class);
+            Log.e("startX",startX.toString());
             it.putExtra("startX",startX);
             it.putExtra("startY",startY);
             it.putExtra("Destination",allPlace2Send.get(thatPosition));

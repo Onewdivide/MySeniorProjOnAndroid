@@ -562,7 +562,7 @@ public class NavigationActivity extends AppCompatActivity implements TextToSpeec
         int x ;
         int y ;
         Log.e("callcurrentAtStart:", getIntent().getStringExtra("startX"));
-        Log.e("callcurrentAtStart:", getIntent().getStringExtra("startX"));
+        Log.e("callcurrentAtStart:", getIntent().getStringExtra("startY"));
         xyLocation.setText(getIntent().getStringExtra("startX")+","+getIntent().getStringExtra("startY"));
         double Pithagorus;
         for(int i = 0 ; i<EachXandY.size(); i++){
