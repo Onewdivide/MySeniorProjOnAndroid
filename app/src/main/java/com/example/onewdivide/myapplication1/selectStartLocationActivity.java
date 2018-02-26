@@ -136,10 +136,10 @@ public class selectStartLocationActivity extends AppCompatActivity {
     public final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                if (loopcount<6){
+                if (loopcount<7){
                     new FeedJSONTask().execute("");
                     loopcount+=1;
-                    handler.postDelayed(runnable,5000);
+                    handler.postDelayed(runnable,15000);
                     Log.e("getAutoLocationX",String.valueOf(getLocationX));
                 }
                 else{
