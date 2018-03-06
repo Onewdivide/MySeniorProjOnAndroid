@@ -93,21 +93,21 @@ public class NavigationActivity extends AppCompatActivity implements TextToSpeec
             if (checkOnDestinationYet == 0 ){
 
 
-                new FeedJSONTaskCurrentLocation().execute("");
-                int[] currentRecall;
-                if (inLoopFirstTime){
-                    currentRecall = new int[]{parseInt(getIntent().getStringExtra("startX")),
-                            parseInt(getIntent().getStringExtra("startY"))};
-                    inLoopFirstTime = false;
-                }
-                else{
-                    currentRecall = new int[]{APIcallCurrentlocationX, APIcallCurrentLocationY};
-                }
+//                new FeedJSONTaskCurrentLocation().execute("");
+//                int[] currentRecall;
+//                if (inLoopFirstTime){
+//                    currentRecall = new int[]{parseInt(getIntent().getStringExtra("startX")),
+//                            parseInt(getIntent().getStringExtra("startY"))};
+//                    inLoopFirstTime = false;
+//                }
+//                else{
+//                    currentRecall = new int[]{APIcallCurrentlocationX, APIcallCurrentLocationY};
+//                }
                 xyLocation.setText(APIcallCurrentlocationX+","+APIcallCurrentLocationY);
 //                for (int test = 0; test<WordInPath.size();test++){
 //                    Log.e("wordInPath",WordInPath.get(test));
 //                }
-//                int[] currentRecall = {VirtualCurrentLocationOnX.get(loopcount),VirtualCurrentLocationOnY.get(loopcount)};
+                int[] currentRecall = {VirtualCurrentLocationOnX.get(loopcount),VirtualCurrentLocationOnY.get(loopcount)};
 //                Log.e("Show Case","Show VirtualX : "+VirtualCurrentLocationOnX.get(loopcount).toString()
 //                        + "Show VirtualY : "+VirtualCurrentLocationOnY.get(loopcount).toString());
 //                Log.e("Current Recall : ", String.valueOf(currentRecall[0]+" , "+ currentRecall[1]));
@@ -149,6 +149,9 @@ public class NavigationActivity extends AppCompatActivity implements TextToSpeec
                     handler.postDelayed(runnable,4000L);
                 }
                 else{
+
+
+
                     OnTheWayTest.setText(path.get(checkArriveThisNodeYet).toString());
                     int x = currentRecall[0] - path.get(checkArriveThisNodeYet).location[0];
                     int y = currentRecall[1] - path.get(checkArriveThisNodeYet).location[1];
@@ -178,8 +181,26 @@ public class NavigationActivity extends AppCompatActivity implements TextToSpeec
 //                    }
 
                     currentLocation.setText("Continue...");
-                    currentPath.setText(wordDistance);
+//                    currentPath.setText(wordDistance);
 //                    Log.e("Continue...", wordDistance);
+
+                    if (checkArriveThisNodeYet<path.size()-1){
+                        if (!path.get(checkArriveThisNodeYet-1).imInThisAreaRight(currentRecall[0],currentRecall[1])
+                                && !path.get(checkArriveThisNodeYet).imInThisAreaRight(currentRecall[0],currentRecall[1])){
+                            currentPath.setText("กรุณาหยุดรอเพื่อคำนวณเส้นทางใหม่");
+                        }
+                        else
+                            currentPath.setText(wordDistance);
+                    }else{
+                        if (!path.get(checkArriveThisNodeYet-1).imInThisAreaRight(currentRecall[0],currentRecall[1])){
+                            currentPath.setText("กรุณาหยุดรอเพื่อคำนวณเส้นทางใหม่");
+                        }
+                        else
+                            currentPath.setText(wordDistance);
+                    }
+
+
+
                     Log.e("Debug >>" ,"This is checkArriveThisNodeYet : "+checkArriveThisNodeYet
                             +" and this is WordInpath.size : "+WordInPath.size() + "This is loopcount : "+loopcount);
                     MyTTS.getInstance(NavigationActivity.this).speak(currentPath.getText().toString());
@@ -212,36 +233,36 @@ public class NavigationActivity extends AppCompatActivity implements TextToSpeec
         btnSubmit.setOnClickListener(this);
 
         //Add VirtualCurrentLocation
-//        VirtualCurrentLocationOnX.add(230);
-//        VirtualCurrentLocationOnY.add(83);
+        VirtualCurrentLocationOnX.add(250);
+        VirtualCurrentLocationOnY.add(180);
+
+        VirtualCurrentLocationOnX.add(250);
+        VirtualCurrentLocationOnY.add(177);
 //
-//        VirtualCurrentLocationOnX.add(232);
-//        VirtualCurrentLocationOnY.add(82);
+        VirtualCurrentLocationOnX.add(0);
+        VirtualCurrentLocationOnY.add(0);
+
+        VirtualCurrentLocationOnX.add(250);
+        VirtualCurrentLocationOnY.add(170);
 //
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(82);
+        VirtualCurrentLocationOnX.add(257);
+        VirtualCurrentLocationOnY.add(170);
+
+        VirtualCurrentLocationOnX.add(0);
+        VirtualCurrentLocationOnY.add(0);
 //
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(78);
+        VirtualCurrentLocationOnX.add(260);
+        VirtualCurrentLocationOnY.add(170);
+
+        VirtualCurrentLocationOnX.add(260);
+        VirtualCurrentLocationOnY.add(167);
 //
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(75);
+        VirtualCurrentLocationOnX.add(0);
+        VirtualCurrentLocationOnY.add(0);
 //
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(72);
-//
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(70);
-//
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(67);
-//
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(63);
-//
-//        VirtualCurrentLocationOnX.add(234);
-//        VirtualCurrentLocationOnY.add(59);
-//
+        VirtualCurrentLocationOnX.add(260);
+        VirtualCurrentLocationOnY.add(160);
+
 //        VirtualCurrentLocationOnX.add(234);
 //        VirtualCurrentLocationOnY.add(57);
 //
@@ -561,9 +582,9 @@ public class NavigationActivity extends AppCompatActivity implements TextToSpeec
 
         int x ;
         int y ;
-        Log.e("callcurrentAtStart:", getIntent().getStringExtra("startX"));
-        Log.e("callcurrentAtStart:", getIntent().getStringExtra("startY"));
-        xyLocation.setText(getIntent().getStringExtra("startX")+","+getIntent().getStringExtra("startY"));
+//        Log.e("callcurrentAtStart:", getIntent().getStringExtra("startX"));
+//        Log.e("callcurrentAtStart:", getIntent().getStringExtra("startY"));
+//        xyLocation.setText(getIntent().getStringExtra("startX")+","+getIntent().getStringExtra("startY"));
         double Pithagorus;
         for(int i = 0 ; i<EachXandY.size(); i++){
             x =  parseInt(getIntent().getStringExtra("startX")) - EachXandY.get(i)[0];

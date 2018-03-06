@@ -127,12 +127,14 @@ public class ChooseDestination extends AppCompatActivity implements WheelPicker.
 
     @Override
     public void onClick(View v) {
-//        Intent it = new Intent(getApplicationContext(),NavigationActivity.class);
-//        it.putExtra("Destination",allPlace2Send.get(thatPosition));
-//        startActivity(it);
-//        finish();
+        Intent it = new Intent(getApplicationContext(),NavigationActivity.class);
+        it.putExtra("startX",startX);
+        it.putExtra("startY",startY);
+        it.putExtra("Destination",allPlace2Send.get(thatPosition));
+        startActivity(it);
+        finish();
 
-        new FeedJSONTask().execute("");
+//        new FeedJSONTask().execute("");
 
     }
 
